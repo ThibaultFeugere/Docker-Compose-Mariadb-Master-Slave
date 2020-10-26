@@ -1,0 +1,6 @@
+[mariadb]
+log-bin
+server_id=2
+log-basename=slave
+binlog-format=mixed
+
