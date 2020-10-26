@@ -1,6 +1,6 @@
 # TP6 
 
-## 1. Créer un fichier docker-compose.yml qui lance deux instances MariaDB
+## 1. Créer un fichier docker-compose.yml qui lance deux instances MariaDB
 
 Contenu de Docker Compose :
 
