@@ -3,6 +3,7 @@
 
 ## 1. Créez une fichier Docker-compose.yml qui lance deux instances MariaDB
 
+
 Contenu de Docker Compose :
 
 ```yaml
@@ -57,7 +58,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 33b19a9b80c3        mariadb:10.4        "docker-entrypoint.s…"   5 seconds ago       Up 4 seconds        3306/tcp            tp6_master_1
 ```
 
+
 ## 2. Ajoutez les fichiers de configurations pour les serveurs Master et Slave
+
 
 Comme on peut le voir dans les volumes la configuration du serveur Master est lié via : `- ./config/master.cnf:/etc/mysql/mariadb.conf.d/master.cnf`
 
@@ -83,7 +86,9 @@ log-basename=slave
 binlog-format=mixed
 ```
 
+
 ## 3. Créez un script pour ajouter l'utilisateur avec les droits de replication sur master
+
 
 Le script en question est situé dans le dossier `scripts` et s'appelle `replicant.sql`.
 
@@ -148,7 +153,9 @@ MariaDB [(none)]> SHOW MASTER STATUS;
 
 ```
 
+
 ## 4. Assurez vous que les deux instances de base de données contiennent les mêmes données
+
 
 On peut d'abord faire un `SHOW DATABASES;` sur les deux containers.
 
@@ -197,11 +204,15 @@ drwxr-xr-x 1 root root    4096 Oct 18 13:28 ..
 
 On peut voir que le poids est identique j'en déduis donc que le contenu est identique.
 
+
 ## 5. Démarrez le serveur master
+
 
 Le serveur Master est démarré 
 
+
 ## 6. Ajoutez le master au slave
+
 
 Via les anciennes commandes, nous avons les informations nécessaires pour ajouter le `master` au `slave`.
 
@@ -213,7 +224,9 @@ MariaDB [(none)]> START SLAVE;
 Query OK, 0 rows affected (0.002 sec)
 ```
 
+
 ## 7. Démarrez et vérifiez l'état du slave
+
 
 ```sql
 MariaDB [(none)]> START SLAVE;
@@ -226,7 +239,9 @@ MariaDB [(none)]> SHOW SLAVE STATUS;
 
 On démarre avec `START SLAVE;` et on regarde le status du `slave` avec `SHOW SLAVE STATUS;` (désolé pour la mise en forme dans le terminal car rend vraiment pas bien mais on voit quand même les informations importantes).
 
+
 ## 8. Créez une nouvelle base de données et une nouvelle table sur le serveur Master et vérifier que les données sont présentes sur le serveur slave
+
 
 Contenu dans `data.sql`.
 
@@ -286,6 +301,7 @@ MariaDB [teams]> select * from games;
 
 
 ## Arborescence
+
 
 Comme d'habitude une petite arborescence pour bien visualiser ce que j'ai mis par écrit.
 
