@@ -1,8 +1,6 @@
 # TP6 
 
-
-## Créez une fichier Docker-compose.yml qui lance deux instances MariaDB
-
+## 1. Créer un fichier docker-compose.yml qui lance deux instances MariaDB
 
 Contenu de Docker Compose :
 
@@ -58,9 +56,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 33b19a9b80c3        mariadb:10.4        "docker-entrypoint.s…"   5 seconds ago       Up 4 seconds        3306/tcp            tp6_master_1
 ```
 
-
-## 2. Ajoutez les fichiers de configurations pour les serveurs Master et Slave
-
+## 2. Ajouter les fichiers de configurations pour les serveurs Master et Slave
 
 Comme on peut le voir dans les volumes la configuration du serveur Master est lié via : `- ./config/master.cnf:/etc/mysql/mariadb.conf.d/master.cnf`
 
